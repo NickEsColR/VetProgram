@@ -5,10 +5,18 @@ public class Owner{
 	
 	//attributes
 	private String name;
-	private int id;
+	private String id;
 	private String adress;
-	private int phone;
+	private String phone;
 	
 	//relations
 	private ArrayList<Pet> pet;
+
+  //methods
+  public Owner(String name, String id, String adress, String phone){
+    this.name = name; 
+    this.id = id;
+    this.adress = adress;
+    this.phone = phone;
+  }
 }

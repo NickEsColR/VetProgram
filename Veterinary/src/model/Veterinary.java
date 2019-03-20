@@ -6,8 +6,6 @@ public class Veterinary{
 	//constants
 	public final static int room = 8;
 	
-	//attributes
-	private ArrayList <ClinicHistory>  clinicHistories;
 	
 	//relations
 	private ArrayList <Owner> person;
@@ -15,7 +13,7 @@ public class Veterinary{
 
 	//methods
 	public Veterinary(){
-		clinicHistories = new ArrayList <ClinicHistory> ();
+		
 		person = new ArrayList <Owner> ();
 		rooms = new Room[room]; 
 	}
