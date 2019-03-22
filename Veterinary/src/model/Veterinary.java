@@ -12,12 +12,21 @@ public class Veterinary{
 	//relations
 	private ArrayList <Owner> people;
 	private Room [] rooms;
-
+	private ArrayList <Drug> drugs;
+	
 	//methods
+	
+	//Veterinary init 
+	
 	public Veterinary(){
 		
+		drugs = new ArrayList<Drug> ();
 		people = new ArrayList <Owner> ();
-		rooms = new Room[ROOM]; 
+		rooms = new Room[ROOM];
+		for(int i = 0;i<ROOM;i++){
+			Room room = new Room(++i);
+			rooms[i] = room;
+		}
 	}
 	
 	public ArrayList <Owner> getPeople(){
@@ -32,7 +41,12 @@ public class Veterinary{
 	public void addRoom(Room newRoom, int pos){
 		rooms[pos] = newRoom;
 	}
-	
+	public ArrayList <Drug> getDrugs(){
+		return drugs;
+	}
+	public void addDrugs(Drug newDrug){
+		drugs.add(newDrug);
+	}
 	public boolean freeRoom(){
 		boolean free = false;
 		int max = 0;
