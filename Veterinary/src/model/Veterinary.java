@@ -49,16 +49,27 @@ public class Veterinary{
 	}
 	public boolean freeRoom(){
 		boolean free = false;
-		int max = 0;
 		for (int i = 0; i < people.size();i++){
-			if(people.get(i).freeRoom() == 1){
-				max++;
+			if(people.get(i).freeRoom() < 8){
+				free = true;
 			}
 		}
-		if(max < 8){
-			free = true;
-		}
+		
 		return free;
 	}
+	public void findOwnerWithId(String idOwner, String petName){
+
+	boolean exit = false;
+	Pet pet= null;
+	for(int i = 0;i < people.size() && !exit;i++){
+		if(idOwner .equals(people.get(i).getId())){
+			exit = true;
+			pet = people.get(i).findPetWithName(petName, people.get(i)); 
+			
+		}
+	}
+
+	}
+	
 	
 }

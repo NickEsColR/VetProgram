@@ -20,6 +20,45 @@ public class Main{
 	
 	public Main(){
 		vet = new Veterinary();
+<<<<<<< HEAD
+		String freeRoom = "";
+		Scanner option = new Scanner(System.in);
+		int cont = 0;
+		String id = "";
+		String petName ="";
+		Drug drug1 = new Drug("vetriderm", 25000.0, 2, 3);//First drug
+		Pet pet2 = new Pet("Misi", "cat", 7, 7.56);//Second pet for owner 1
+		Pet pet1 = new Pet( "Firu", "dog",  5 ,  15.4);//First pet for owner 1
+		Owner owner1 = new Owner( "Seamus",  "19820402",  "Avenida 4 calle 2-4",  "3234567898");//Owner 1
+		owner1.setPets(pet1 );
+		owner1.setPets(pet2 );	
+		vet.addDrugs(drug1);
+		vet.addPeople( owner1);
+		
+		while (cont !=8){
+			showMenu();
+			int election = option.nextInt();
+			option.nextLine();
+			switch(election){
+				case 1:
+					System.out.println("*************************************************************************");
+					if(vet.freeRoom())
+						freeRoom = "hay un cuarto disponible";
+					else
+						freeRoom = "no hay caurtos disponibles";
+					System.out.println(freeRoom);
+					System.out.println("*************************************************************************");
+				
+				break;
+				case 2:
+					System.out.println("*************************************************************************");
+					System.out.println("Digite la id del dueño");
+					id = option.nextLine();
+					System.out.println("Digite el nombre de la mascota");
+					petName = option.nextLine();
+					System.out.println("*************************************************************************");
+
+=======
 		Scanner option = new Scanner(System.in);
 		int cont = 0;
 		
@@ -38,6 +77,7 @@ public class Main{
 				break;
 				case 2:
 				
+>>>>>>> 26cd63ad817232b76d0c1d6bc192607894d1825f
 				break;
 				case 3:
 				
@@ -78,7 +118,11 @@ public class Main{
 		System.out.println("3. Ver historias clinicas abiertas");
 		System.out.println("4. Consultar datos de contacto del dueño");
 		System.out.println("5. Dar una mascota de alta");
+<<<<<<< HEAD
+		System.out.println("6. Ver los ingresos por hospitalizacion");
+=======
 		System.out.println("6. Ver los ingresos por ospitalizacion");
+>>>>>>> 26cd63ad817232b76d0c1d6bc192607894d1825f
 		System.out.println("7. Ver el cuarto en el que se encuentra una mascota");
 		System.out.println("8. Salir del programa ");
 	}

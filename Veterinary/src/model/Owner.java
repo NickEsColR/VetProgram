@@ -54,9 +54,24 @@ public class Owner{
 	  int free = 0;
 	  for (int i = 0; i<pets.size();i++){
 		  if(pets.get(i).freeRoom() == 1)
-			free = 1;
+			free ++;
 	  }
 	  return free;
 	  
   }
+	public Pet findPetWithName(String petName, Owner owner){
+		Pet pet = null;
+		boolean exit = false;
+		for(int i = 0;i < pets.size() && !exit;i++){
+			if(pets.get(i).getName() .equal(petName)){
+				pet = pets.get(i);
+				exit = true;
+			}
+		}
+		if (owner != null){
+			pet.goToPet(owner, pet);
+		}
+		return pet;
+	}
+	public void 
 }

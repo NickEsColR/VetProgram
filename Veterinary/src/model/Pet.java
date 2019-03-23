@@ -76,4 +76,30 @@ public class Pet{
 		}
 		return free;
 	}
+	
+	public void goToPet(Owner owner, Pet pet){
+	if(clinicHistories!= null){
+	
+	}
+		
+	
+	}
+	public double makeCost(){
+	double cost = 0;
+	if(type .equals(TYPE_CAT)){
+		if(weight >= 1 && weight <= 3)
+			cost = 10000.0;
+		else if(weight > 3 && weight <= 10)
+			cost = 12000.0;
+		else if(weight > 10 && weight <= 20)
+			cost = 15000.0;
+		else
+			cost = 20000.0;
+	}
+	if(type .equals(TYPE_DOG)){
+		if(weight >= 1 && weight <= 3)
+			cost = 15000.0;
+	}
+	return cost;
+	}
 }
