@@ -52,35 +52,19 @@ public class Main{
 				break;
 				case 2:
 					System.out.println("*************************************************************************");
-					System.out.println("Digite la id del dueño");
+					System.out.println("Digite la id del duenho");
 					id = option.nextLine();
 					System.out.println("Digite el nombre de la mascota");
 					petName = option.nextLine();
 					System.out.println("Digite el numero de dias que estara la mascota en el cuarto");
 					num = option.nextInt();
+					option.nextLine();
+					System.out.println("Escriba los sintomas presentados");
+					String sintoms = option.nextLine();
+					System.out.println("Escriba el diagnostico");
+					String diagnostic = option.nextLine();
+					vet.createClinicHistory(id, petName, num, sintoms, diagnostic);
 					System.out.println("*************************************************************************");
-
-
-		Scanner option = new Scanner(System.in);
-		int cont = 0;
-		
-		Pet pet2 = new Pet("Misi", "cat", 7, 7.56);//Second pet for owner 1
-		Pet pet1 = new Pet( "Firu", "dog",  5 ,  15.4);//First pet for owner 1
-		Owner owner1 = new Owner( "Seamus",  "19820402",  "Avenida 4 calle 2-4",  "3234567898");//Owner 1
-		owner1.setPets(pet1 );
-		owner1.setPets(pet2 );		
-		vet.addPeople( owner1);
-		Drug drug1 = new Drug("vetriderm", 25000.0, 2, 3);
-		while (cont !=8){
-			int election = option.nextInt();
-			switch(election){
-				case 1:
-				
-				break;
-				case 2:
-				
-
-				break;
 				case 3:
 				
 				break;

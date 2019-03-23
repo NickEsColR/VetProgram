@@ -57,7 +57,7 @@ public class Veterinary{
 		
 		return free;
 	}
-	public void findOwnerWithId(String idOwner, String petName, int days){
+	public void createClinicHistory(String idOwner, String petName, int days, String sintoms, String diagnostic){
 	Room freeRoom = null;
 	boolean exit = false;
 	Pet pet= null;
@@ -66,33 +66,40 @@ public class Veterinary{
 			exit = true;
 			freeRoom = getFreeRoomNumber( people.get(i));
 
-			pet = people.get(i).findPetWithName(petName, people.get(i), days, freeRoom); 
+			pet = people.get(i).createClinicHistory(petName, people.get(i), days, sintoms, diagnostic, freeRoom); 
 			
 		}
 	}
 
 	}
 	public Room getFreeRoomNumber(Owner owner){
-		ArrayList<int[]> roomNumber = new ArrayList<int[]>();
-		roomNumber.add(owner.get(i).numberFreeRoom());
-		ArrayList <int[]> compareNumber = new ArrayList<int[]>();
-		int free = 0;
 		Room freeRoom = null;
-		for(int i = 1;i < 9;i++){
-			compareNumber.add(i);
+		int [] roomNumber = new int [ROOM];
+		int numberFreeRoom = 0;
+		for(int c = 0;c < ROOM;c++){
+			roomNumber[c] = c + 1;
 		}
-		for(int j = 0;j < roomNumber.size(); j++){
-			boolean exit = false;
-			for(int k = 0;k < 8 && !exit ;k++){
-				if(roomNumber.get(i)== compareNumber(k)){
-					compareNumber.remove(k);
-					exit = true;
+		boolean exit = false;
+		for(int i = 0;i < people.size();i++){
+			for(int j = 0;j < people.get(i).getPets().size();j++){
+				for(int k = 0;k < ROOM; k++){
+				if(people.get(i).getRoomNumber(j)== roomNumber[k]){
+					roomNumber[k] = 0;
+				}
 				}
 			}
 		}
-		if(compareNumber.size() != 0){
-			free = compareNumber.get(0);
-			freeRoom = rooms.get(--free);
+		for(int t = 0; t < ROOM && !exit;t++){
+			if(roomNumber[t] != 0){
+				numberFreeRoom = roomNumber[t];
+				exit = true;
+			}
+		}
+		for(int u = 0;u < ROOM && exit;u++){
+			if(rooms[u].getNumber() == numberFreeRoom){
+				freeRoom = rooms[u];
+				exit = false;
+			}
 		}
 		return freeRoom;
 	}

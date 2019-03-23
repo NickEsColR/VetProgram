@@ -50,36 +50,34 @@ public class Owner{
   public void setPets(Pet newPet){
 	  pets.add(newPet);
   }
-  public int freeRoom(){
+  public int getRoomNumber(int pos){
+	  int free = 0;
+		  if(pets.get(pos).getRoom() != null)
+			free = pets.get(pos).getRoomNumber();
+	  
+	  return free;
+	  
+  }
+	public int freeRoom(){
 	  int free = 0;
 	  for (int i = 0; i<pets.size();i++){
 		  if(pets.get(i).freeRoom() == 1)
 			free ++;
 	  }
 	  return free;
-	  
-  }
-  	 public ArrayList<int> numberFreeRoom(){
-	  ArrayList<int> free = new ArrayList<int>();
-	  for (int i = 0; i<pets.size();i++){
-		  if(pets.get(i).freeRoom() == 1)
-			 free.add(pets.get(i).roomNumber());
-	  }
-	  return free;
-  }
- 
-	public Pet findPetWithName(String petName, Owner owner, int days, Room freeRoom){
+	}
+	public Pet createClinicHistory(String petName, Owner owner, int days, String sintoms, String diagnostic, Room freeRoom){
 		Pet pet = null;
 		boolean exit = false;
 		for(int i = 0;i < pets.size() && !exit;i++){
-			if(pets.get(i).getName() .equal(petName)){
+			if(pets.get(i).getName() .equals(petName)){
 				pet = pets.get(i);
 				exit = true;
 			}
 		}
 		if (pet != null){
 			
-			pet.goToPet(owner, pet, days, freeRoom);
+			pet.createClinicHistory(owner, pet, days,sintoms, diagnostic, freeRoom);
 		}
 		return pet;
 	}

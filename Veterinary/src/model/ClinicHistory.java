@@ -11,18 +11,22 @@ public class ClinicHistory{
 	private boolean open;
 	private double cost;
 	private int numberOfDays;
+	private String sintoms;
+	private String diagnostic;
 	private ArrayList <ClinicHistory> clinicHistories; 
 	
 	//relations
 	private ArrayList <Drug> drugs;
 	
 	//methods
-	public ClinicHistory(Pet pet, Owner owner, boolean open, double cost,int days, Room room){
+	public ClinicHistory(Pet pet, Owner owner, boolean open, double cost,int days, String sintoms, String diagnostic, Room room){
 	  this.open = open;
 	  this.cost = cost;
 	  this.pet = pet;
 	  this.owner = owner;
 	  this.room = room;
+	  this.sintoms = sintoms;
+	  this.diagnostic = diagnostic;
 	  numberOfDays = days;
 	  clinicHistories = new ArrayList <ClinicHistory> ();
 	}

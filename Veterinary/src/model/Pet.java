@@ -76,11 +76,11 @@ public class Pet{
 		}
 		return free;
 	}
-	public int roomNumber(){
+	public int getRoomNumber(){
 		return room.getNumber();
 	}
-	public void goToPet(Owner owner, Pet pet, int days, Room freeRoom){
-		ClinicHistory ch = new ClinicHistory(pet, owner, true, makeCost(), days, freeRoom);
+	public void createClinicHistory(Owner owner, Pet pet, int days, String sintoms, String diagnostic, Room freeRoom){
+		ClinicHistory ch = new ClinicHistory(pet, owner, true, makeCost(), days,sintoms, diagnostic,  freeRoom);
 		setClinicHistory(ch);
 		ch.setHistory( clinicHistories);
 	
