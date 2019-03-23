@@ -57,19 +57,45 @@ public class Veterinary{
 		
 		return free;
 	}
-	public void findOwnerWithId(String idOwner, String petName){
-
+	public void findOwnerWithId(String idOwner, String petName, int days){
+	Room freeRoom = null;
 	boolean exit = false;
 	Pet pet= null;
 	for(int i = 0;i < people.size() && !exit;i++){
 		if(idOwner .equals(people.get(i).getId())){
 			exit = true;
-			pet = people.get(i).findPetWithName(petName, people.get(i)); 
+			freeRoom = getFreeRoomNumber( people.get(i));
+
+			pet = people.get(i).findPetWithName(petName, people.get(i), days, freeRoom); 
 			
 		}
 	}
 
 	}
-	
+	public Room getFreeRoomNumber(Owner owner){
+		ArrayList<int[]> roomNumber = new ArrayList<int[]>();
+		roomNumber.add(owner.get(i).numberFreeRoom());
+		ArrayList <int[]> compareNumber = new ArrayList<int[]>();
+		int free = 0;
+		Room freeRoom = null;
+		for(int i = 1;i < 9;i++){
+			compareNumber.add(i);
+		}
+		for(int j = 0;j < roomNumber.size(); j++){
+			boolean exit = false;
+			for(int k = 0;k < 8 && !exit ;k++){
+				if(roomNumber.get(i)== compareNumber(k)){
+					compareNumber.remove(k);
+					exit = true;
+				}
+			}
+		}
+		if(compareNumber.size() != 0){
+			free = compareNumber.get(0);
+			freeRoom = rooms.get(--free);
+		}
+		return freeRoom;
+	}
+
 	
 }

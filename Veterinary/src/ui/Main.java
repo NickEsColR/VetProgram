@@ -20,7 +20,7 @@ public class Main{
 	
 	public Main(){
 		vet = new Veterinary();
-<<<<<<< HEAD
+		int num = 0;
 		String freeRoom = "";
 		Scanner option = new Scanner(System.in);
 		int cont = 0;
@@ -56,9 +56,11 @@ public class Main{
 					id = option.nextLine();
 					System.out.println("Digite el nombre de la mascota");
 					petName = option.nextLine();
+					System.out.println("Digite el numero de dias que estara la mascota en el cuarto");
+					num = option.nextInt();
 					System.out.println("*************************************************************************");
 
-=======
+
 		Scanner option = new Scanner(System.in);
 		int cont = 0;
 		
@@ -77,7 +79,7 @@ public class Main{
 				break;
 				case 2:
 				
->>>>>>> 26cd63ad817232b76d0c1d6bc192607894d1825f
+
 				break;
 				case 3:
 				
@@ -118,11 +120,11 @@ public class Main{
 		System.out.println("3. Ver historias clinicas abiertas");
 		System.out.println("4. Consultar datos de contacto del dueño");
 		System.out.println("5. Dar una mascota de alta");
-<<<<<<< HEAD
+
 		System.out.println("6. Ver los ingresos por hospitalizacion");
-=======
+
 		System.out.println("6. Ver los ingresos por ospitalizacion");
->>>>>>> 26cd63ad817232b76d0c1d6bc192607894d1825f
+
 		System.out.println("7. Ver el cuarto en el que se encuentra una mascota");
 		System.out.println("8. Salir del programa ");
 	}

@@ -59,7 +59,16 @@ public class Owner{
 	  return free;
 	  
   }
-	public Pet findPetWithName(String petName, Owner owner){
+  	 public ArrayList<int> numberFreeRoom(){
+	  ArrayList<int> free = new ArrayList<int>();
+	  for (int i = 0; i<pets.size();i++){
+		  if(pets.get(i).freeRoom() == 1)
+			 free.add(pets.get(i).roomNumber());
+	  }
+	  return free;
+  }
+ 
+	public Pet findPetWithName(String petName, Owner owner, int days, Room freeRoom){
 		Pet pet = null;
 		boolean exit = false;
 		for(int i = 0;i < pets.size() && !exit;i++){
@@ -68,10 +77,11 @@ public class Owner{
 				exit = true;
 			}
 		}
-		if (owner != null){
-			pet.goToPet(owner, pet);
+		if (pet != null){
+			
+			pet.goToPet(owner, pet, days, freeRoom);
 		}
 		return pet;
 	}
-	public void 
+	 
 }
