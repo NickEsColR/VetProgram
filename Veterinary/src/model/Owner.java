@@ -93,13 +93,24 @@ public class Owner{
 		}
 		return cDrugs;
 	}
-	 public ArryList<ClinicHistory> seeClinicHistoriesOpen(){
-		ArrayList<ClinicHistory> historyOpen = new ArrayList<ClinicHistory>;
+	 public ArrayList<ClinicHistory> seeClinicHistoriesOpen(){
+		ArrayList<ClinicHistory> historyOpen = new ArrayList<ClinicHistory>();
 		for(int i= 0;i < pets.size();i++){
 			if(pets.get(i).seeClinicHistoriesOpen()!= null){
-				historyOpen.add(seeClinicHistoriesOpen());
+				historyOpen.add(pets.get(i).seeClinicHistoriesOpen());
 			}
 		}
 		return historyOpen;
+	 }
+	 public String closeClinicHistoryOpen(String petName){
+		 String msj = "";
+		 boolean find = false;
+		 for(int i = 0;i < pets.size()&& !find ;i++){
+			 if(pets.get(i).getName() .equals(petName)){
+				 find = true;
+				 msj = pets.get(i).closeClinicHistoryOpen();
+			 }
+		 }
+		 return msj;
 	 }
 }

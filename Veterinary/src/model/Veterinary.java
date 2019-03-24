@@ -113,7 +113,6 @@ public class Veterinary{
 	public ArrayList<Drug> findDrugsOfAClinicHistory(String idOwner, String petName,int day, int month, int year ){
 		ArrayList<Drug> cDrugs = new ArrayList<Drug>();
 		boolean find = false;
-		Owner person = null;
 		for(int i = 0;i < people.size() && !find; i++){
 			if(people.get(i).getId() .equals(idOwner)){
 				find = true;
@@ -123,14 +122,27 @@ public class Veterinary{
 		}
 		return cDrugs;
 	}
-	public ArryList<ClinicHistory> seeClinicHistoriesOpen(){
+	public ArrayList<ClinicHistory> seeClinicHistoriesOpen(){
 		ArrayList<ClinicHistory> cHistoryOpen = new ArrayList<ClinicHistory>();
 		for(int i = 0;i < people.size();i++){
-			for(intj = 0;j < people.get(i).seeClinicHistoriesOpen().size();j++){
-				cHistoryOpen.add(people.get(i).seeClinicHistoriesOpen().get(j));
+			Owner owner = people.get(i);
+			for(int j = 0;j <owner.seeClinicHistoriesOpen().size();j++){
+				cHistoryOpen.add(owner.seeClinicHistoriesOpen().get(j));
 			}
 		}
 		return cHistoryOpen;
 	}
-	
+	public String closeClinicHistoryOpen(String idOwner, String petName){
+		String msj = "";
+		
+		boolean find = false;
+		for(int i = 0;i < people.size() && !find; i++){
+			if(people.get(i).getId() .equals(idOwner)){
+				find = true;
+				msj = people.get(i).closeClinicHistoryOpen(petName);
+			}
+		}
+		
+		return msj;
+	}
 }

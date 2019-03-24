@@ -154,4 +154,12 @@ public class Pet{
 			historyOpen = cHistory;
 		return historyOpen;
 	}
+	public String closeClinicHistoryOpen(){
+		String msj = "";
+		cHistory.setOpen(false);
+		clinicHistories.add(cHistory);
+		cHistory = null;
+		msj = "el animal se dio de alta correctamente";
+		return msj;
+	}
 }
