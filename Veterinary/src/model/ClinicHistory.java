@@ -7,7 +7,6 @@ public class ClinicHistory{
 	
 	private Pet pet;
 	private Owner owner;
-
 	private boolean open;
 	private double cost;
 	private String sintoms;
