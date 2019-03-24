@@ -90,11 +90,26 @@ public class Main{
 					System.out.println("Digite el anho en el que ingreso la mascota en el cuarto ");
 					 year = option.nextInt();
 					cDrugs = vet.findDrugsOfAClinicHistory( id,  petName, day,  month,  year );
+					if(cDrugs.size() == 0){
+					System.out.println("No se encontraron drogas. ");
+					System.out.println("Es posible que digitara mal la cedula, el nombre de la mascota o la fecha ");
+					System.out.println("Tambien es posible que la historia clinica no exista ");
+						
+					}
+					else{
+					System.out.println("Lo(s) medicamentos son:  "+cDrugs);
+						
+					}
 					System.out.println("*************************************************************************");
 				break;
 				case 4:
 					System.out.println("*************************************************************************");
-					System.out.println(vet.seeClinicHistoriesOpen());
+					if(vet.seeClinicHistoriesOpen().size() == 0){
+					System.out.println("no hay historias clinicas abiertas");	
+					}
+					else{
+						System.out.println(vet.seeClinicHistoriesOpen());
+					}
 					System.out.println("*************************************************************************");
 				break;
 				case 5:
@@ -117,21 +132,25 @@ public class Main{
 					System.out.println("*************************************************************************");
 				break;
 				case 8:
-					System.out.println("*************************************************************************");
-					System.out.println("que vuelva pronto");
-					System.out.println("*************************************************************************");
-				break;
-				case 9:
+					
 					System.out.println("*************************************************************************");
 					System.out.println("Digite la cedula del duenho");
 					id = option.nextLine();
 					System.out.println("Digite el nombre de la mascota cuyos medicamentos de hospitalizacion desea conocer	");
 					petName = option.nextLine();
 					int roomNumber = vet.roomNumberOfAPet(id, petName);
-					if(roomNumber == 0)
+					if(roomNumber == 0){
+						
 						System.out.println("La mascota que busca no esta hospitalizada");
-					else
-						System.out.println(vet.roomNumberOfAPet());	
+					}
+					else{
+						System.out.println("el numero de cuarto donde se encuentra la mascota es: "+ roomNumber);	
+					}
+					System.out.println("*************************************************************************");
+				break;
+				case 9:
+					System.out.println("*************************************************************************");
+					System.out.println("que vuelva pronto");
 					System.out.println("*************************************************************************");
 					cont = 9;
 				break;

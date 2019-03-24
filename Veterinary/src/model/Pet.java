@@ -141,8 +141,8 @@ public class Pet{
 			}
 		}
 		for(int i = 0;i < clinicHistories.size()&&!find;i++){
-			if(clinicHistories.getDay()== day && clinicHistories.getMonth == month && clinicHistories.getYear == year){
-				cDrugs = clinicHistories.findDrugs( );
+			if(clinicHistories.get(i).getDay()== day && clinicHistories.get(i).getMonth() == month && clinicHistories.get(i).getYear() == year){
+				cDrugs = clinicHistories.get(i).findDrugs( );
 				find = true;
 			}
 		}
