@@ -10,16 +10,16 @@ public class ClinicHistory{
 	private Room room;
 	private boolean open;
 	private double cost;
-	private int numberOfDays;
 	private String sintoms;
 	private String diagnostic;
 	private ArrayList <ClinicHistory> clinicHistories; 
+	private int [] date;
 	
 	//relations
 	private ArrayList <Drug> drugs;
 	
 	//methods
-	public ClinicHistory(Pet pet, Owner owner, boolean open, double cost,int days, String sintoms, String diagnostic, Room room){
+	public ClinicHistory(Pet pet, Owner owner, boolean open, double cost, String sintoms, String diagnostic, Room room){
 	  this.open = open;
 	  this.cost = cost;
 	  this.pet = pet;
@@ -27,8 +27,8 @@ public class ClinicHistory{
 	  this.room = room;
 	  this.sintoms = sintoms;
 	  this.diagnostic = diagnostic;
-	  numberOfDays = days;
 	  clinicHistories = new ArrayList <ClinicHistory> ();
+	  date = new int[3];
 	}
 	public Owner getOwner(){
 		return owner;
@@ -62,12 +62,7 @@ public class ClinicHistory{
 			cost += drugs.get(i).getCost();
 		}
 	}
-	public int getDays(){
-		return numberOfDays;
-	}
-	public void setDays(int days){
-		numberOfDays = days;
-	}
+	
 	public ArrayList<ClinicHistory> getHistory(){
 		return clinicHistories;
 	}
@@ -77,7 +72,34 @@ public class ClinicHistory{
 	public ArrayList<Drug> getDrug(){
 		return drugs;
 	}
-	public void addDrug(Drug drug){
-		drugs.add(drug);
+	public void setDrug(Drug[] drug){
+		for(int i = 0;i < drug.length;i++){
+			drugs.add(drug[i]);
+		}
+	}
+	public void setDate(int day, int month, int year){
+		date[0] = day;
+		date[1] = month;
+		date[2] = year;
+	}
+	public int[] getDate(){
+		return date;
+	}
+	public int getDay(){
+		return date[0];
+	}
+	public int getMonth(){
+		return date[1];
+	}
+	public int getYear(){
+		return date[2];
+	}
+	public ArrayList<Drug> findDrugs(){
+		ArrayList<Drug> cDrugs = new ArrayList<Drug>();
+		for(int i = 0;i < drugs.size();i++){
+			cDrugs.add(drugs.get(i));
+		}
+		return cDrugs;
+		
 	}
 }

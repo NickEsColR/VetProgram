@@ -24,6 +24,7 @@ public class Main{
 		String freeRoom = "";
 		Scanner option = new Scanner(System.in);
 		int cont = 0;
+		ArrayList <Drug> cDrugs = new ArrayList <Drug>;
 		String id = "";
 		String petName ="";
 		Drug drug1 = new Drug("vetriderm", 25000.0, 2, 3);//First drug
@@ -35,7 +36,7 @@ public class Main{
 		vet.addDrugs(drug1);
 		vet.addPeople( owner1);
 		
-		while (cont !=8){
+		while (cont !=9){
 			showMenu();
 			int election = option.nextInt();
 			option.nextLine();
@@ -52,35 +53,71 @@ public class Main{
 				break;
 				case 2:
 					System.out.println("*************************************************************************");
-					System.out.println("Digite la id del duenho");
+					System.out.println("Digite la cedula del duenho");
 					id = option.nextLine();
 					System.out.println("Digite el nombre de la mascota");
 					petName = option.nextLine();
-					System.out.println("Digite el numero de dias que estara la mascota en el cuarto");
-					num = option.nextInt();
+					System.out.println("Digite el dia en el que ingresa la mascota en el cuarto ");
+					int day = option.nextInt();
+					System.out.println("Digite el mes en el que ingresa la mascota en el cuarto ");
+					int month = option.nextInt();
+					System.out.println("Digite el anho en el que ingresa la mascota en el cuarto ");
+					int year = option.nextInt();
 					option.nextLine();
 					System.out.println("Escriba los sintomas presentados");
 					String sintoms = option.nextLine();
 					System.out.println("Escriba el diagnostico");
 					String diagnostic = option.nextLine();
-					vet.createClinicHistory(id, petName, num, sintoms, diagnostic);
+					System.out.println("Digite cuantos medicamentos se van a usar");
+					int drugs = option.nextInt();
+					String[]drugName = String [drugs];
+					for(int i = 0;i < drugs;i++){
+						System.out.println("Digite el nombre del medicamento");
+						drugName[i] = option.nextLine();
+					}
+					vet.createClinicHistory(id, petName, day, month, year, sintoms, diagnostic, drugName);
 					System.out.println("*************************************************************************");
 				case 3:
-				
+					System.out.println("*************************************************************************");
+					System.out.println("Digite la cedula del duenho");
+					id = option.nextLine();
+					System.out.println("Digite el nombre de la mascota cuyos medicamentos de hospitalizacion desea conocer	");
+					petName = option.nextLine();
+					System.out.println("Digite el dia en el que ingreso la mascota en el cuarto ");
+					 day = option.nextInt();
+					System.out.println("Digite el mes en el que ingreso la mascota en el cuarto ");
+					 month = option.nextInt();
+					System.out.println("Digite el anho en el que ingreso la mascota en el cuarto ");
+					 year = option.nextInt();
+					cDrugs = vet.findDrugsOfAClinicHistory( id,  petName, day,  month,  year )
+					System.out.println("*************************************************************************");
 				break;
 				case 4:
-				
+					System.out.println("*************************************************************************");
+					System.out.println("que vuelva pronto");
+					System.out.println("*************************************************************************");
 				break;
 				case 5:
-				
+					System.out.println("*************************************************************************");
+					System.out.println("que vuelva pronto");
+					System.out.println("*************************************************************************");
 				break;
 				case 6:
-				
+					System.out.println("*************************************************************************");
+					System.out.println("que vuelva pronto");
+					System.out.println("*************************************************************************");
 				break;
 				case 7:
-				
+					System.out.println("*************************************************************************");
+					System.out.println("que vuelva pronto");
+					System.out.println("*************************************************************************");
 				break;
 				case 8:
+					System.out.println("*************************************************************************");
+					System.out.println("que vuelva pronto");
+					System.out.println("*************************************************************************");
+				break;
+				case 9:
 					System.out.println("*************************************************************************");
 					System.out.println("que vuelva pronto");
 					System.out.println("*************************************************************************");
@@ -101,15 +138,12 @@ public class Main{
 		System.out.println("digite el numero de la opcion que desea");
 		System.out.println("1. Ver si hay un cuarto disponible");
 		System.out.println("2. Crear una nueva historia clinica");
-		System.out.println("3. Ver historias clinicas abiertas");
-		System.out.println("4. Consultar datos de contacto del dueño");
-		System.out.println("5. Dar una mascota de alta");
-
-		System.out.println("6. Ver los ingresos por hospitalizacion");
-
-		System.out.println("6. Ver los ingresos por ospitalizacion");
-
-		System.out.println("7. Ver el cuarto en el que se encuentra una mascota");
-		System.out.println("8. Salir del programa ");
+		System.out.println("3. Conocer los medicamentosque tiene una historia");
+		System.out.println("4. Ver historias clinicas abiertas");
+		System.out.println("5. Consultar datos de contacto del dueño");
+		System.out.println("6. Dar una mascota de alta");
+		System.out.println("7. Ver los ingresos por hospitalizacion");
+		System.out.println("8. Ver el cuarto en el que se encuentra una mascota");
+		System.out.println("9. Salir del programa ");
 	}
 }

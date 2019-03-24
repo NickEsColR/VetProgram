@@ -79,11 +79,13 @@ public class Pet{
 	public int getRoomNumber(){
 		return room.getNumber();
 	}
-	public void createClinicHistory(Owner owner, Pet pet, int days, String sintoms, String diagnostic, Room freeRoom){
-		ClinicHistory ch = new ClinicHistory(pet, owner, true, makeCost(), days,sintoms, diagnostic,  freeRoom);
+	public void createClinicHistory(Owner owner, Pet pet, int day,int month, int year, String sintoms, String diagnostic,
+									Room freeRoom, Drug[]cDrugs){
+		ClinicHistory ch = new ClinicHistory(pet, owner, true, makeCost(),sintoms, diagnostic,  freeRoom);
 		setClinicHistory(ch);
 		ch.setHistory( clinicHistories);
-	
+		ch.setDate( day,  month,  year);
+		ch.setDrug( cDrugs);
 	}
 	public double makeCost(){
 	double cost = 0;
@@ -129,4 +131,22 @@ public class Pet{
 	}
 	return cost;
 	}
+	public ArrayList<Drug> findDrugs(int day, int month, int year){
+		ArrayList<Drug> cDrugs = new ArrayList<Drug>();
+		boolean find = false;
+		if(cHistory != null){
+			if(cHistory.getDay()== day && cHistory.getMonth() == month && cHistory.getYear() == year){
+				cDrugs = cHistory.findDrugs( );
+				find = true;
+			}
+		}
+		for(int i = 0;i < clinicHistories.size()&&!find;i++){
+			if(clinicHistories.getDay()== day && clinicHistories.getMonth == month && clinicHistories.getYear == year){
+				cDrugs = clinicHistories.findDrugs( );
+				find = true;
+			}
+		}
+		return cDrugs;
+	}
+	
 }

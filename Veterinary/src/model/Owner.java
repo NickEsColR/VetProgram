@@ -66,7 +66,8 @@ public class Owner{
 	  }
 	  return free;
 	}
-	public Pet createClinicHistory(String petName, Owner owner, int days, String sintoms, String diagnostic, Room freeRoom){
+	public Pet createClinicHistory(String petName, Owner owner, int day,int month, int year, 
+									String sintoms, String diagnostic, Room freeRoom, Drug[]cDrugs){
 		Pet pet = null;
 		boolean exit = false;
 		for(int i = 0;i < pets.size() && !exit;i++){
@@ -77,9 +78,20 @@ public class Owner{
 		}
 		if (pet != null){
 			
-			pet.createClinicHistory(owner, pet, days,sintoms, diagnostic, freeRoom);
+			pet.createClinicHistory(owner, pet, day, month, year, sintoms, diagnostic, freeRoom, cDrugs);
 		}
 		return pet;
+	}
+	public ArrayList<Drug> findDrugs(String petName,int day, int month, int year){
+		ArrayList<Drug> cDrugs = new ArrayList<Drug>();
+		boolean find = false;
+		for(int i = 0;i < pets.size() && !find;i++){
+			if(pets.get(i).getName() .equals(petName)){
+				find = true;
+				cDrugs = pets.get(i).findDrugs(day, month, year);
+			}
+		}
+		return cDrugs;
 	}
 	 
 }
