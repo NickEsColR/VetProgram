@@ -148,5 +148,10 @@ public class Pet{
 		}
 		return cDrugs;
 	}
-	
+	public ClinicHistory seeClinicHistoriesOpen(){
+		ClinicHistory historyOpen = null;
+		if(cHistory != null)
+			historyOpen = cHistory;
+		return historyOpen;
+	}
 }

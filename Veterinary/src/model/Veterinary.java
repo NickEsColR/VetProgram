@@ -123,6 +123,14 @@ public class Veterinary{
 		}
 		return cDrugs;
 	}
-	
+	public ArryList<ClinicHistory> seeClinicHistoriesOpen(){
+		ArrayList<ClinicHistory> cHistoryOpen = new ArrayList<ClinicHistory>();
+		for(int i = 0;i < people.size();i++){
+			for(intj = 0;j < people.get(i).seeClinicHistoriesOpen().size();j++){
+				cHistoryOpen.add(people.get(i).seeClinicHistoriesOpen().get(j));
+			}
+		}
+		return cHistoryOpen;
+	}
 	
 }

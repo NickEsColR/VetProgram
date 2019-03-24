@@ -93,5 +93,13 @@ public class Owner{
 		}
 		return cDrugs;
 	}
-	 
+	 public ArryList<ClinicHistory> seeClinicHistoriesOpen(){
+		ArrayList<ClinicHistory> historyOpen = new ArrayList<ClinicHistory>;
+		for(int i= 0;i < pets.size();i++){
+			if(pets.get(i).seeClinicHistoriesOpen()!= null){
+				historyOpen.add(seeClinicHistoriesOpen());
+			}
+		}
+		return historyOpen;
+	 }
 }
