@@ -7,7 +7,7 @@ public class ClinicHistory{
 	
 	private Pet pet;
 	private Owner owner;
-	private Room room;
+
 	private boolean open;
 	private double cost;
 	private String sintoms;
@@ -17,6 +17,7 @@ public class ClinicHistory{
 	
 	//relations
 	private ArrayList <Drug> drugs;
+	private Room room;
 	
 	//methods
 	public ClinicHistory(Pet pet, Owner owner, boolean open, double cost, String sintoms, String diagnostic, Room room){

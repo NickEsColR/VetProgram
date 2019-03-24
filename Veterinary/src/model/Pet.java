@@ -162,4 +162,11 @@ public class Pet{
 		msj = "el animal se dio de alta correctamente";
 		return msj;
 	}
+	public int roomNumberOfAPet(){
+		int roomNumber = 0;
+		if(cHistory != null){
+			roomNumber = cHistory.getRoom().getNumber();
+		}
+		return roomNumber;
+	}
 }

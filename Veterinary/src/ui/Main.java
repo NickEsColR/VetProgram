@@ -123,7 +123,15 @@ public class Main{
 				break;
 				case 9:
 					System.out.println("*************************************************************************");
-					System.out.println("que vuelva pronto");
+					System.out.println("Digite la cedula del duenho");
+					id = option.nextLine();
+					System.out.println("Digite el nombre de la mascota cuyos medicamentos de hospitalizacion desea conocer	");
+					petName = option.nextLine();
+					int roomNumber = vet.roomNumberOfAPet(id, petName);
+					if(roomNumber == 0)
+						System.out.println("La mascota que busca no esta hospitalizada");
+					else
+						System.out.println(vet.roomNumberOfAPet());	
 					System.out.println("*************************************************************************");
 					cont = 9;
 				break;

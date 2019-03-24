@@ -145,4 +145,17 @@ public class Veterinary{
 		
 		return msj;
 	}
+	public int roomNumberOfAPet(String idOwner, String petName){
+		int roomNumber = 0;
+		
+		boolean find = false;
+		for(int i = 0;i < people.size() && !find; i++){
+			if(people.get(i).getId() .equals(idOwner)){
+				find = true;
+				roomNumber = people.get(i).roomNumberOfAPet(petName);
+			}
+		}
+		
+		return roomNumber;
+	}
 }

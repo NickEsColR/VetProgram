@@ -113,4 +113,15 @@ public class Owner{
 		 }
 		 return msj;
 	 }
+	  public int roomNumberOfAPet(String petName){
+		 int roomNumber = 0;
+		 boolean find = false;
+		 for(int i = 0;i < pets.size()&& !find ;i++){
+			 if(pets.get(i).getName() .equals(petName)){
+				 find = true;
+				 roomNumber = pets.get(i).roomNumberOfAPet();
+			 }
+		 }
+		 return roomNumber;
+	 }
 }
