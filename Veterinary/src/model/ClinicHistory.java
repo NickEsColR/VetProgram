@@ -13,10 +13,11 @@ public class ClinicHistory{
 	private String diagnostic;
 	private ArrayList <ClinicHistory> clinicHistories; 
 	private int [] date;
+	private Room room;
 	
 	//relations
 	private ArrayList <Drug> drugs;
-	private Room room;
+	
 	
 	//methods
 	public ClinicHistory(Pet pet, Owner owner, boolean open, double cost, String sintoms, String diagnostic, Room room){
@@ -44,9 +45,6 @@ public class ClinicHistory{
 	}
 	public Room getRoom(){
 		return room;
-	}
-	public void setRoom(Room room){
-		this.room = room;
 	}
 	public boolean getOpen(){
 	  return open;

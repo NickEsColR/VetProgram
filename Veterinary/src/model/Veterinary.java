@@ -38,9 +38,7 @@ public class Veterinary{
 	public Room[] getRooms(){
 		return rooms;
 	}
-	public void addRoom(Room newRoom, int pos){
-		rooms[pos] = newRoom;
-	}
+	
 	public ArrayList <Drug> getDrugs(){
 		return drugs;
 	}

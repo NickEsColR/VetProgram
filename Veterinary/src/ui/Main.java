@@ -35,8 +35,11 @@ public class Main{
 		owner1.setPets(pet1 );
 		owner1.setPets(pet2 );	
 		vet.addDrugs(drug1);
+		Room room1 = vet.getFreeRoomNumber(owner1);
 		vet.addPeople( owner1);
-		
+		ClinicHistory ch1 = new ClinicHistory(pet1, owner1, true, 20000.0, "problemas en la piel", "Alergia", room1);
+		pet1.setClinicHistory(ch1);
+		ch1.setDate(23, 03, 2019);
 		while (cont !=9){
 			showMenu();
 			int election = option.nextInt();
