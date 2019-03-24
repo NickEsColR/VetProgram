@@ -102,13 +102,13 @@ public class Owner{
 		}
 		return historyOpen;
 	 }
-	 public String closeClinicHistoryOpen(String petName){
+	 public String closeClinicHistoryOpen(String petName, int[]date){
 		 String msj = "";
 		 boolean find = false;
 		 for(int i = 0;i < pets.size()&& !find ;i++){
 			 if(pets.get(i).getName() .equals(petName)){
 				 find = true;
-				 msj = pets.get(i).closeClinicHistoryOpen();
+				 msj = pets.get(i).closeClinicHistoryOpen(date);
 			 }
 		 }
 		 return msj;
@@ -123,5 +123,12 @@ public class Owner{
 			 }
 		 }
 		 return roomNumber;
+	 }
+	 public double  costOfAllClinicHistories(){
+		 double cost = 0;
+		 for(int i = 0;i < pets.size();i++){
+			 cost += pets.get(i).costOfAllClinicHistories();
+		 }
+		 return cost;
 	 }
 }

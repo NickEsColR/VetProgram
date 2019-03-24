@@ -154,9 +154,11 @@ public class Pet{
 			historyOpen = cHistory;
 		return historyOpen;
 	}
-	public String closeClinicHistoryOpen(){
+	public String closeClinicHistoryOpen(int[]date){
 		String msj = "";
 		cHistory.setOpen(false);
+		int days = cHistory.differenceBetweenEnterDateAndOutDate(date);
+		cHistory.addCostWithDrugs( days);
 		clinicHistories.add(cHistory);
 		cHistory = null;
 		msj = "el animal se dio de alta correctamente";
@@ -168,5 +170,15 @@ public class Pet{
 			roomNumber = cHistory.getRoom().getNumber();
 		}
 		return roomNumber;
+	}
+	public double  costOfAllClinicHistories(){
+		double cost = 0;
+		if(cHistory != null){
+			cost += cHistory.getCost();
+		}
+		for(int i = 0;i < clinicHistories.size();i++){
+			cost += clinicHistories.get(i).getCost();
+		}
+		return cost;
 	}
 }

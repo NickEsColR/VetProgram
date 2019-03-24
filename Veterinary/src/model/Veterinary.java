@@ -132,14 +132,14 @@ public class Veterinary{
 		}
 		return cHistoryOpen;
 	}
-	public String closeClinicHistoryOpen(String idOwner, String petName){
+	public String closeClinicHistoryOpen(String idOwner, String petName, int[]date){
 		String msj = "";
 		
 		boolean find = false;
 		for(int i = 0;i < people.size() && !find; i++){
 			if(people.get(i).getId() .equals(idOwner)){
 				find = true;
-				msj = people.get(i).closeClinicHistoryOpen(petName);
+				msj = people.get(i).closeClinicHistoryOpen(petName,date);
 			}
 		}
 		
@@ -157,5 +157,13 @@ public class Veterinary{
 		}
 		
 		return roomNumber;
+	}
+	
+	public double costOfAllClinicHistories(){
+	double cost = 0;
+	for(int i = 0;i < people.size();i++){
+		cost += people.get(i).costOfAllClinicHistories();
+	}
+	return cost;
 	}
 }

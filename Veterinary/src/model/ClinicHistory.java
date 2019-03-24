@@ -103,4 +103,22 @@ public class ClinicHistory{
 		return cDrugs;
 		
 	}
+	public int differenceBetweenEnterDateAndOutDate(int[]outDate){
+		int difference = 0;
+		for(int i = 2; i >= 0;i--){
+			difference += outDate[i] - date[i];
+			if(i == 2){
+				difference *= 365;
+			}
+			else if(i == 1){
+				difference *= 30;
+			}
+		}
+		return difference;
+	}
+	public void addCostWithDrugs(int days){
+	for(int i = 0;i < drugs.size();i++){
+		cost += drugs.get(i).getCost() * days;
+	}
+	}
 }

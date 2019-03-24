@@ -21,6 +21,7 @@ public class Main{
 	public Main(){
 		vet = new Veterinary();
 		int num = 0;
+		int[]date = new int[3];
 		String freeRoom = "";
 		Scanner option = new Scanner(System.in);
 		int cont = 0;
@@ -123,12 +124,18 @@ public class Main{
 					id = option.nextLine();
 					System.out.println("Digite el nombre de la mascota cuyos medicamentos de hospitalizacion desea conocer	");
 					petName = option.nextLine();
-					System.out.println(vet.closeClinicHistoryOpen(id, petName));
+					System.out.println("Digite el dia actual ");
+					 date[0] = option.nextInt();
+					System.out.println("Digite el mes actual ");
+					 date[1] = option.nextInt();
+					System.out.println("Digite el anho actual ");
+					 date[2] = option.nextInt();
+					System.out.println(vet.closeClinicHistoryOpen(id, petName,date));
 					System.out.println("*************************************************************************");
 				break;
 				case 7:
 					System.out.println("*************************************************************************");
-					System.out.println("que vuelva pronto");
+					System.out.println("El costo de las hospitalizaciones es: "+vet.costOfAllClinicHistories());
 					System.out.println("*************************************************************************");
 				break;
 				case 8:
