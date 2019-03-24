@@ -160,10 +160,32 @@ public class Veterinary{
 	}
 	
 	public double costOfAllClinicHistories(){
-	double cost = 0;
-	for(int i = 0;i < people.size();i++){
-		cost += people.get(i).costOfAllClinicHistories();
+		double cost = 0;
+		for(int i = 0;i < people.size();i++){
+			cost += people.get(i).costOfAllClinicHistories();
+		}
+		return cost;
 	}
-	return cost;
+	public ArrayList<Owner> contactWithOwner(String idOwner, String petName){
+		ArrayList<Owner> owners = new ArrayList<Owner>();
+		boolean theOwners = false;
+		boolean find = false;
+		if(idOwner != ""){
+			for(int i = 0;i < people.size() && !find; i++){
+				if(people.get(i).getId() .equals(idOwner)){
+					find = true;
+					owners.add(people.get(i));
+				}
+			}
+		}
+		else{
+			for(int j =0;j < people.size();j++){
+				theOwners = people.get(j).contactWithOwner(petName);
+				if(theOwners)
+					owners.add(people.get(j));
+				}
+			}
+		
+		return owners;
 	}
 }

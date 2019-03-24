@@ -131,4 +131,13 @@ public class Owner{
 		 }
 		 return cost;
 	 }
+	 public boolean contactWithOwner(String petName){
+		boolean find = false;
+		for(int k = 0;k < pets.size();k++){
+			if(pets.get(k).getName() .equals(petName)){
+				find = true;
+			}
+		}
+		return find;
+	 }
 }

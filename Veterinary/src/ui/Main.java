@@ -115,7 +115,11 @@ public class Main{
 				break;
 				case 5:
 					System.out.println("*************************************************************************");
-					System.out.println("que vuelva pronto");
+					System.out.println("Digite la cedula del duenho si puede");
+					id = option.nextLine();
+					System.out.println("Digite el nombre de la mascota cuyos medicamentos de hospitalizacion desea conocer	");
+					petName = option.nextLine();
+					System.out.println(vet.contactWithOwner(id, petName));
 					System.out.println("*************************************************************************");
 				break;
 				case 6:
