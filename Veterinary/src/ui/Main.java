@@ -24,7 +24,7 @@ public class Main{
 		String freeRoom = "";
 		Scanner option = new Scanner(System.in);
 		int cont = 0;
-		ArrayList <Drug> cDrugs = new ArrayList <Drug>;
+		ArrayList <Drug> cDrugs = new ArrayList <Drug>();
 		String id = "";
 		String petName ="";
 		Drug drug1 = new Drug("vetriderm", 25000.0, 2, 3);//First drug
@@ -70,7 +70,7 @@ public class Main{
 					String diagnostic = option.nextLine();
 					System.out.println("Digite cuantos medicamentos se van a usar");
 					int drugs = option.nextInt();
-					String[]drugName = String [drugs];
+					String []drugName = new String [drugs];
 					for(int i = 0;i < drugs;i++){
 						System.out.println("Digite el nombre del medicamento");
 						drugName[i] = option.nextLine();
@@ -89,12 +89,12 @@ public class Main{
 					 month = option.nextInt();
 					System.out.println("Digite el anho en el que ingreso la mascota en el cuarto ");
 					 year = option.nextInt();
-					cDrugs = vet.findDrugsOfAClinicHistory( id,  petName, day,  month,  year )
+					cDrugs = vet.findDrugsOfAClinicHistory( id,  petName, day,  month,  year );
 					System.out.println("*************************************************************************");
 				break;
 				case 4:
 					System.out.println("*************************************************************************");
-					System.out.println(seeClinicHistoriesOpen());
+					System.out.println(vet.seeClinicHistoriesOpen());
 					System.out.println("*************************************************************************");
 				break;
 				case 5:
