@@ -16,7 +16,9 @@ public class Veterinary{
 	
 	//methods
 	
-	//Veterinary init 
+	/**
+	* init relations of a Owner<br>
+	*/
 	
 	public Veterinary(){
 		
@@ -29,32 +31,85 @@ public class Veterinary{
 		}
 	}
 	
+	/**
+	* get the owners exist<br>
+	* @return people is the owners exist<br>
+	*/
+	
 	public ArrayList <Owner> getPeople(){
 		return people;
 	}
+	
+	/**
+	* add a new owner exist<br>
+	* @param owner is a new owner <br>
+	*/
+	
 	public void addPeople(Owner owner){
 		people.add(owner);
 	}
+	
+	/**
+	* get the rooms exist<br>
+	* @return rooms is the rooms exist<br>
+	*/
+	
 	public Room[] getRooms(){
 		return rooms;
 	}
 	
+	/**
+	* get the drugs exist<br>
+	* @return drugs is the drugs exist<br>
+	*/
+	
 	public ArrayList <Drug> getDrugs(){
 		return drugs;
 	}
+	
+	/**
+	* add a new drug <br>
+	* @param newDrug is a new drug <br>
+	*/
+	
 	public void addDrugs(Drug newDrug){
 		drugs.add(newDrug);
 	}
+	
+	/**
+	* look if a room is free<br>
+	* @return free is if a room can be ocuped by a pet<br>
+	*/
+	
 	public boolean freeRoom(){
 		boolean free = false;
+		int num = 0;
 		for (int i = 0; i < people.size();i++){
-			if(people.get(i).freeRoom() < 8){
+			num += people.get(i).freeRoom();
+		}
+			if(num < 8){
 				free = true;
 			}
-		}
 		
 		return free;
 	}
+	
+	/**
+	* create a new clinic history <br>
+	* @param idOwner is the owner id of the pet will be hospitalized. idOwner != ""<br>
+	* @param petName is the name of pet for the clinic history. petName != "" <br>
+	* @param day is the day the clinic history is created <br>
+	* @param month is the month the clinic history is created <br>
+	* @param year is the year the clinic history is created <br>
+	* @param sintoms are the sintoms the pet have <br>
+	* @param diagnostic is the diagnostic of what the pet have <br>
+	* @param drugName are the name of the drugs the pet is going to use <br>
+	* @see Owner.getId()<br>
+	* @see getFreeRoomNumber<br>
+	* @see Owner.createClinicHistory( String, Owner, int, int, int, String, String, Room, Drug[])<br>
+	* @see Drug.getName()<br>
+	*/
+	
 	public void createClinicHistory(String idOwner, String petName, int day,int month, int year, 
 									String sintoms, String diagnostic, String[]drugName){
 	Drug[]cDrugs = new Drug[drugName.length];
@@ -64,7 +119,7 @@ public class Veterinary{
 	for(int i = 0;i < people.size() && !exit;i++){
 		if(idOwner .equals(people.get(i).getId())){
 			exit = true;
-			freeRoom = getFreeRoomNumber( people.get(i));
+			freeRoom = getFreeRoomNumber( );
 
 			pet = people.get(i).createClinicHistory(petName, people.get(i), day, month, year, sintoms, diagnostic, freeRoom, cDrugs); 
 			
@@ -77,7 +132,15 @@ public class Veterinary{
 		}
 	}
 	}
-	public Room getFreeRoomNumber(Owner owner){
+	
+	/**
+	* search a free room <br>
+	* @see Owner.getRoomNumber()<br>
+	* @see Room.getNumber()<br>
+	* @return freeRoom is the empty room that can be used<br>
+	*/
+	
+	public Room getFreeRoomNumber(){
 		Room freeRoom = null;
 		int [] roomNumber = new int [ROOM];
 		int numberFreeRoom = 0;
@@ -108,6 +171,19 @@ public class Veterinary{
 		}
 		return freeRoom;
 	}
+	
+	/**
+	* search the drugs of a clinic history of a pet <br>
+	* @param idOwner is the owner id of the pet is hospitalized. idOwner != ""<br>
+	* @param petName is the name of the pet. petName != ""<br>
+	* @param day is the day the clinic history was created <br>
+	* @param month is the month the clinic history was created <br>
+	* @param year is the year the clinic history was created <br>
+	* @see Owner.findDrugs()<br>
+	* @see Owner.getId()<br>
+	* @return ArrayList of Drug is the drugs of a clinic history <br> 
+	*/
+	
 	public ArrayList<Drug> findDrugsOfAClinicHistory(String idOwner, String petName,int day, int month, int year ){
 		ArrayList<Drug> cDrugs = new ArrayList<Drug>();
 		boolean find = false;
@@ -120,6 +196,13 @@ public class Veterinary{
 		}
 		return cDrugs;
 	}
+	
+	/**
+	* see the clinic histories are open <br>
+	* @see Owner.seeClinicHistoriesOpen()<br>
+	* @return ArrayList of ClinicHistory are the clinic histories open<br>
+	*/
+	
 	public ArrayList<ClinicHistory> seeClinicHistoriesOpen(){
 		ArrayList<ClinicHistory> cHistoryOpen = new ArrayList<ClinicHistory>();
 		for(int i = 0;i < people.size();i++){
@@ -130,6 +213,17 @@ public class Veterinary{
 		}
 		return cHistoryOpen;
 	}
+	
+	/**
+	* close a clinic history of a pet<br>
+	* @param idOwner is the owner id of the pet is hospitalized. idOwner != ""<br>
+	* @param petName is the name of the pet. petName != ""<br>
+	* @param date is the ot date<br>
+	* @see Owner.getId()<br>
+	* @see Owner.closeClinicHistoryOpen()<br>
+	* @return msj is a message that say if the clinic history close successfully<br>
+	*/
+	
 	public String closeClinicHistoryOpen(String idOwner, String petName, int[]date){
 		String msj = "";
 		
@@ -143,6 +237,16 @@ public class Veterinary{
 		
 		return msj;
 	}
+	
+	/**
+	* search the room number of a pet with owner id and pet name<br>
+	* @param idOwner is the owner id of the pet is hospitalized. idOwner != ""<br>
+	* @param petName is the name of the pet. petName != ""<br>
+	* @see Owner.roomNumberOfAPet()<br>
+	* @see Owner.getId()<br>
+	* @return roomNumber is the room number the pet is using<br> 
+	*/
+	
 	public int roomNumberOfAPet(String idOwner, String petName){
 		int roomNumber = 0;
 		
@@ -157,6 +261,12 @@ public class Veterinary{
 		return roomNumber;
 	}
 	
+	/**
+	* calculate the cost of all clinic histories open and closed<br>
+	* @see Owner.costOfAllClinicHistories()<br>
+	* @return cost is the cost of all clinic histories<br>
+	*/
+	
 	public double costOfAllClinicHistories(){
 		double cost = 0;
 		for(int i = 0;i < people.size();i++){
@@ -164,6 +274,16 @@ public class Veterinary{
 		}
 		return cost;
 	}
+	
+	/**
+	* get the contact of a owner <br>
+	* @param idOwner is the owner id of the pet is hospitalized. idOwner != ""<br>
+	* @param petName is the name of the pet. petName != ""<br>
+	* @see Owner.getId()<br>
+	* @see Owner.contactWithOwner()<br>
+	* @return ArrayList of Owner with all possible owner <br>
+	*/
+	
 	public ArrayList<Owner> contactWithOwner(String idOwner, String petName){
 		ArrayList<Owner> owners = new ArrayList<Owner>();
 		boolean theOwners = false;
