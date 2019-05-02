@@ -33,15 +33,37 @@ public class Main{
 		Drug drug1 = new Drug("vetriderm", 25000.0, 2, 3);//First drug
 		Pet pet2 = new Pet("Misi", "cat", 7, 7.56, 2.50);//Second pet for owner 1
 		Pet pet1 = new Pet( "Firu", "dog",  5 ,  15.4, 4.57);//First pet for owner 1
-		Owner owner1 = new Owner( "Seamus",  "19820402",  "Avenida 4 calle 2-4",  "3234567898");//Owner 1
-		owner1.setPets(pet1 );
-		owner1.setPets(pet2 );	
+		Owner owner = new Owner( "Seamus",  "19820402",  "Avenida 4 calle 2-4",  "3234567898");//Owner 1
+		owner.setPets(pet1 );
+		owner.setPets(pet2 );	
 		vet.addDrugs(drug1);
-		Room room1 = vet.getFreeRoomNumber();
-		vet.addPeople( owner1);
-		ClinicHistory ch1 = new ClinicHistory(pet1, owner1, true, 20000.0, "problemas en la piel", "Alergia", room1);
+		Room room = vet.getFreeRoomNumber(); //free room
+		vet.addPeople( owner);
+		ClinicHistory ch1 = new ClinicHistory(pet1, owner, true, 20000.0, "problemas en la piel", "Alergia", room);
 		pet1.setClinicHistory(ch1);
 		ch1.setDate(23, 03, 2019);
+		pet1 = new Pet( "Zeus", "dog",  2 ,  7.22, 1.9);//First pet for owner 2
+		pet2 = new Pet("Felix", "cat", 4, 5.8, 3);//Second pet for owner 2
+		owner = new Owner( "Jea Eun Kim",  "1509286426",  "Calle 4 kra 12-40",  "3576890729");//Owner 2
+		owner.setPets(pet1 );
+		owner.setPets(pet2 );
+		room = vet.getFreeRoomNumber(); //free room
+		vet.addPeople( owner);
+		ch1 = new ClinicHistory(pet1, owner, false, 35000.0, "escamas en la piel", "Enfermedad de la piel", room);
+		pet1.addClinicHistories(ch1);
+		ch1.setDate(05, 07, 2018);
+		date[0] = 2019;
+		date[1] = 02;
+		date[2] = 25;
+		vet.addService(Service.SHOWER_PET, date,"Firu","19820402");
+		date[0] = 2018;
+		date[1] = 12;
+		date[2] = 15;
+		vet.addService(Service.NAIL_CUT, date,"Misi","19820402");
+		date[0] = 2019;
+		date[1] = 04;
+		date[2] = 07;
+		vet.addService(Service.VACCINE, date,"Zeus","1509286426");
 		while (cont !=9){
 			showMenu();
 			int election = option.nextInt();
