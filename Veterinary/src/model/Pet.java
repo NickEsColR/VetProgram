@@ -22,6 +22,7 @@ public class Pet{
 	
 	private Room room;
 	private ClinicHistory cHistory;
+	private ArrayList<Service> services;
 	
 	//methods
 	
@@ -42,6 +43,7 @@ public class Pet{
 	  this.weight = weight;
 	  this.height = height;
 	  clinicHistories = new ArrayList <ClinicHistory>();
+	  services = new ArrayList <Service>();
 	}
 	
 	/**
@@ -356,4 +358,97 @@ public class Pet{
 		}
 		return cost;
 	}
-}
+	
+	/**
+	*Description This method allows to calculate the body mass index for a pet.
+	*pre: The pet was created before and its attributes height and weight are not null neither height must be zero.
+	*post: The BMI is calculated.
+	*@return The pet body mass index. Returns -1 if the height is zero  due to the division on zero does not exist.
+	*/
+
+	
+	public double calculateBodyMassIndex(){
+		double bmi = weight;
+		if(height == 0){
+			bmi = -1;
+		}
+		else{
+			bmi /= height * height;
+		}
+		return bmi;
+	}
+	
+	
+	
+	/**
+	* calculate the earnings per service<br>
+	* @param type is the service type wanna know the earning<br>
+	* @return cost is the earning of a service<br>
+	*/
+	
+	public double costOfAService(String type){
+		double cost = 0;
+		for(int i = 0; i < services.size();i++){
+			if(services.get(i).getName().equals(type)){
+				cost += services.get(i).getCost();
+			}
+		}
+		return cost;
+	}
+	
+	/**
+	* add a service to a pet<br>
+	* <b>Pos:</b> the service has been created<br>
+	* @param name is the name of the service <br>
+	* @param theDate is the date  the service was loan<br>
+	* @param idPet is the  pet id taken the service <br>
+	* @param idOwner is the owner id for the pet take the service<br>
+	*/
+	
+	public void addService(String name, int[]theDate, String idPet, String idOwner){
+		services.add(new Service(name,theDate,idPet,idOwner));
+	}
+	
+	/**
+	* calculate cost of service and count the total of services on a define week<br>
+	* @param date is the week start and finish. date is exactly a week<br>
+	* @return costAndApparitions are the cost of all services and how many services are<br>
+	*/
+	/**
+	public double[] costAndApparitionOfAWeek(int[] date){
+		double[] costAndApparitons = new double[2];
+		for(int i = 0;i < services.size();i++){
+			if()
+		}
+		return costAndApparitions;
+	}
+	*/
+	
+	/**
+	* look for the services are in a determinate start and finish date<br>
+	* @param theDate is the start and finish date<br>
+	* @return theServices are the services that are on the delimited date<br>
+	*/
+	
+	public ArrayList<Service> getServicesOfADelimitedDate(int[] theDate){
+		ArrayList<Service> theServices = new ArrayList<Service>();
+		while(theDate[0] != theDate[3] | theDate[1] != theDate[4] | theDate[2] != theDate[5]){
+			for(int i = 0;i < services.size();i++){
+				if(services.get(i).getDatePos(0) == theDate[0] && services.get(i).getDatePos(1) == theDate[1] && services.get(i).getDatePos(2) == theDate[2]){
+					theServices.add(services.get(i));
+				}
+			}
+			theDate[2]++;
+			if(theDate[2] == 31){
+				theDate[2] = 1;
+				theDate[1]++;
+				if(theDate[1] == 13){
+					theDate[1] = 1;
+					theDate[0]++;
+				}
+			}
+			
+		}		
+		return theServices;
+	}
+} //end of class

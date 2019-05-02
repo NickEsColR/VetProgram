@@ -99,4 +99,4 @@ public class Drug{
 	this.frecuency = frecuency;
   }
  
-} 
+} //end of class

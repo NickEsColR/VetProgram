@@ -306,4 +306,105 @@ public class Veterinary{
 		
 		return owners;
 	}
-}
+	
+		/**
+	* calculate the earnings per service<br>
+	* @param type is the service type wanna know the earning<br>
+	* @return cost is the earning of a service<br>
+	*/
+	
+	public double costOfAService(String type){
+		double cost = 0;
+		for(int i = 0; i < people.size();i++){
+				cost += people.get(i).costOfAService(type);
+			}
+		return cost;
+		}
+	
+
+	/**
+	* calculate the earnings for all services and clinic history<br>
+	* @return cost is the earning of all services and hospitalization the veterinary do<br>
+	*/
+	
+	public double earningOfTheVet(){
+		double cost = 0;
+			cost += costOfAService(Service.SHOWER_PET) + costOfAService(Service.SHOWER_DOMICILE) + costOfAService(Service.NAIL_CUT) +
+			costOfAService(Service.DENTAL_PROPHYLAXIS) + costOfAService(Service.VACCINE) + costOfAllClinicHistories() ;
+		return cost;
+	}
+	
+	/**
+	* add a service to a pet<br>
+	* <b>Pos:</b> the service has been created<br>
+	* @param name is the name of the service <br>
+	* @param theDate is the date  the service was loan<br>
+	* @param idPet is the  pet id taken the service <br>
+	* @param idOwner is the owner id for the pet take the service<br>
+	*/
+	
+	public void addService(String name, int[]theDate, String idPet, String idOwner){
+		for(int i = 0;i < people.size();i++){
+			if(people.get(i).getId().equals(idOwner)){
+				people.get(i).addService(name,theDate,idPet,idOwner);
+			}
+		}
+	}
+	
+	/**
+	* calculate the average of a service<br>
+	* @param type is the type of service<br>
+	* @return ave is the average of a service type<br>
+	*/
+	
+	
+	public double calculateAverageOfAService(String type){
+		double ave = 0;
+		if(Service.SHOWER_PET.equals(type)){
+			ave = Service.COST_SHOWER_PET;
+		}
+		else if(Service.SHOWER_DOMICILE.equals(type)){
+			ave = Service.COST_SHOWER_DOMICILE;
+		}
+		else if(Service.NAIL_CUT.equals(type)){
+			ave = Service.COST_NAIL_CUT;
+		}
+		else if(Service.DENTAL_PROPHYLAXIS.equals(type)){
+			ave = Service.COST_DENTAL_PROPHYLAXIS;
+		}
+		else if(Service.VACCINE.equals(type)){
+			ave = Service.COST_VACCINE;
+		}
+		return ave;
+	}
+	
+	/**
+	* calculate the average for the veterinary of a specific week<br>
+	* @param date is the date the week start and finish. date is exactly a week<br>
+	* @return ave is the average for the vet on a week<br>
+	*/
+	/**
+	public double calculateAverageOfAWeek(int[]date){
+		double ave = 0;
+		
+		return ave;
+	}
+	*/
+	
+	/**
+	* look for the services are in a determinate start and finish date<br>
+	* @param theDate is the start and finish date<br>
+	* @return theServices are the services that are on the delimited date<br>
+	*/
+	
+	
+	public ArrayList<Service> getServicesOfADelimitedDate(int[]theDate){
+		ArrayList<Service> theServices = new ArrayList<Service>();
+		for(int i = 0;i < people.size();i++){
+			for(int j = 0;j < people.get(i).getServicesOfADelimitedDate(theDate).size();j++){
+				theServices.add(people.get(i).getServicesOfADelimitedDate(theDate).get(j));
+			}
+		}
+		return theServices;
+	}
+} //end of class

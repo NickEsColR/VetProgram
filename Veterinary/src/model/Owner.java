@@ -293,4 +293,70 @@ public class Owner{
 		}
 		return find;
 	 }
-}
+	 
+	 /**
+	*Description This method allows to update the basic data of a veterinary client, these data include, address and phone number.
+	*pre: The client was created before.
+	*post: The address and /or phone number of the client is updated.
+	*@param The new address of the client. This param could be empty.
+	*@param The new phone number of the client. This param could be empty.
+	*/
+
+	public  void updateBasicData(String address, String phone){
+		if(address != ""){
+			adress = address;
+		}
+		if(phone != ""){
+			this.phone = phone;
+		}
+	}
+	
+	/**
+	* calculate the earnings per service<br>
+	* @param type is the service type wanna know the earning<br>
+	* @return cost is the earning of a service<br>
+	*/
+	
+	public double costOfAService(String type){
+		double cost = 0;
+		for(int i = 0; i < pets.size();i++){
+				cost += pets.get(i).costOfAService(type);
+			}
+		return cost;
+		}
+	
+	
+	/**
+	* add a service to a pet<br>
+	* <b>Pos:</b> the service has been created<br>
+	* @param name is the name of the service <br>
+	* @param theDate is the date  the service was loan<br>
+	* @param idPet is the  pet id taken the service <br>
+	* @param idOwner is the owner id for the pet take the service<br>
+	*/
+	
+	public void addService(String name, int[]theDate, String idPet, String idOwner){
+		for(int i = 0;i < pets.size();i++){
+			if(pets.get(i).getName().equals(idPet)){
+				pets.get(i).addService(name,theDate,idPet,idOwner);
+			}
+		}
+	}
+	
+	/**
+	* look for the services are in a determinate start and finish date<br>
+	* @param theDate is the start and finish date<br>
+	* @return theServices are the services that are on the delimited date<br>
+	*/
+	
+	
+	public ArrayList<Service> getServicesOfADelimitedDate(int[]theDate){
+		ArrayList<Service> theServices = new ArrayList<Service>();
+		for(int i = 0;i < pets.size();i++){
+			for(int j = 0;j < pets.get(i).getServicesOfADelimitedDate(theDate).size();j++){
+				theServices.add(pets.get(i).getServicesOfADelimitedDate(theDate).get(j));
+			}
+		}
+		return theServices;
+	}
+} //end of class

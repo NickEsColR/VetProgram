@@ -20,6 +20,8 @@ public class Main{
 	
 	public Main(){
 		vet = new Veterinary();
+		String typeName = "";
+		String idOwner = "";
 		int num = 0;
 		int[]date = new int[3];
 		String freeRoom = "";
@@ -29,13 +31,13 @@ public class Main{
 		String id = "";
 		String petName ="";
 		Drug drug1 = new Drug("vetriderm", 25000.0, 2, 3);//First drug
-		Pet pet2 = new Pet("Misi", "cat", 7, 7.56);//Second pet for owner 1
-		Pet pet1 = new Pet( "Firu", "dog",  5 ,  15.4);//First pet for owner 1
+		Pet pet2 = new Pet("Misi", "cat", 7, 7.56, 2.50);//Second pet for owner 1
+		Pet pet1 = new Pet( "Firu", "dog",  5 ,  15.4, 4.57);//First pet for owner 1
 		Owner owner1 = new Owner( "Seamus",  "19820402",  "Avenida 4 calle 2-4",  "3234567898");//Owner 1
 		owner1.setPets(pet1 );
 		owner1.setPets(pet2 );	
 		vet.addDrugs(drug1);
-		Room room1 = vet.getFreeRoomNumber(owner1);
+		Room room1 = vet.getFreeRoomNumber();
 		vet.addPeople( owner1);
 		ClinicHistory ch1 = new ClinicHistory(pet1, owner1, true, 20000.0, "problemas en la piel", "Alergia", room1);
 		pet1.setClinicHistory(ch1);
@@ -163,6 +165,123 @@ public class Main{
 					System.out.println("*************************************************************************");
 				break;
 				case 9:
+					serviceMenu();
+					int type = option.nextInt();
+					option.nextLine();
+					switch(type){
+						case 1:
+							typeName = Service.SHOWER_PET;
+						break;
+						case 2:
+							typeName = Service.SHOWER_DOMICILE;
+						break;
+						case 3:
+							typeName = Service.NAIL_CUT;
+						break;
+						case 4:
+							typeName = Service.DENTAL_PROPHYLAXIS;
+						break;
+						case 5:
+							typeName = Service.VACCINE;
+						break;
+					}
+					System.out.println("Los ingresos del servicio "+ typeName + " son "+ vet.calculateAverageOfAService(typeName));
+				break;
+				case 10:
+					System.out.println("*************************************************************************");
+					System.out.println("los ingresos totales son "+ vet.earningOfTheVet());
+					System.out.println("*************************************************************************");
+				break;
+				case 11:
+					System.out.println("*************************************************************************");
+					
+					serviceMenu();
+					type = option.nextInt();
+					option.nextLine();
+					System.out.println("escriba el documento de identificacion del dueño ");
+					idOwner = option.nextLine();
+					System.out.println("escriba el nombre de la mascota");
+					petName = option.nextLine();
+					System.out.println("digite el anho que se presto el servicio");
+					date[0] = option.nextInt();
+					option.nextLine();
+					System.out.println("digite el mes que se presto el servicio");
+					date[1] = option.nextInt();
+					option.nextLine();
+					System.out.println("digite el dia que se presto el servicio");
+					date[2] = option.nextInt();
+					option.nextLine();
+					
+					switch(type){
+						case 1:
+							typeName = Service.SHOWER_PET;
+						break;
+						case 2:
+							typeName = Service.SHOWER_DOMICILE;
+						break;
+						case 3:
+							typeName = Service.NAIL_CUT;
+						break;
+						case 4:
+							typeName = Service.DENTAL_PROPHYLAXIS;
+						break;
+						case 5:
+							typeName = Service.VACCINE;
+						break;
+					}
+					vet.addService( typeName, date,  petName,  idOwner);
+					System.out.println("*************************************************************************");
+				break;
+				case 12:
+					serviceMenu();
+					 type = option.nextInt();
+					option.nextLine();
+					switch(type){
+						case 1:
+							typeName = Service.SHOWER_PET;
+						break;
+						case 2:
+							typeName = Service.SHOWER_DOMICILE;
+						break;
+						case 3:
+							typeName = Service.NAIL_CUT;
+						break;
+						case 4:
+							typeName = Service.DENTAL_PROPHYLAXIS;
+						break;
+						case 5:
+							typeName = Service.VACCINE;
+						break;
+					}
+					System.out.println("El promedio de ingresos por el servicio de "+typeName+ " es "+vet.calculateAverageOfAService( typeName));
+				break;
+				case 14:
+					System.out.println("*************************************************************************");
+					int[] determinateDate = new int[6];
+					System.out.println("digite el anho de inicio de la fecha esperada");
+					determinateDate[0] = option.nextInt();
+					option.nextLine();
+					System.out.println("digite el mes de inicio de la fecha esperada");
+					determinateDate[1] = option.nextInt();
+					option.nextLine();
+					System.out.println("digite el dia de inicio de la fecha esperada");
+					determinateDate[2] = option.nextInt();
+					option.nextLine();
+					System.out.println("digite el anho de cierre de la fecha esperada");
+					determinateDate[3] = option.nextInt();
+					option.nextLine();
+					System.out.println("digite el mes de cierre de la fecha esperada");
+					determinateDate[4] = option.nextInt();
+					option.nextLine();
+					System.out.println("digite el dia de cierre de la fecha esperada");
+					determinateDate[5] = option.nextInt();
+					option.nextLine();
+					for(int i = 0;i < vet.getServicesOfADelimitedDate(determinateDate).size();i++){
+						System.out.println(vet.getServicesOfADelimitedDate(determinateDate).get(i));
+					}
+					System.out.println("*************************************************************************");
+				break;
+				case 15:
 					System.out.println("*************************************************************************");
 					System.out.println("que vuelva pronto");
 					System.out.println("*************************************************************************");
@@ -189,6 +308,21 @@ public class Main{
 		System.out.println("6. Dar una mascota de alta");
 		System.out.println("7. Ver los ingresos por hospitalizacion");
 		System.out.println("8. Ver el cuarto en el que se encuentra una mascota");
-		System.out.println("9. Salir del programa ");
+		System.out.println("9. Ver los ingresos por un servicio");
+		System.out.println("10. Ver los ingresos totales de la veterinaria");
+		System.out.println("11. agregar un nuevo servicio prestado");
+		System.out.println("12. Ver el promedio de los ingresos de un servicio");
+		System.out.println("13. ver promedio de ingresos en una semana determinada");
+		System.out.println("14. reporte de los servicios prestados en una fecha determinada");
+		System.out.println("15. Salir del programa ");
 	}
-}
+	
+	public void serviceMenu(){
+		System.out.println("escoja el tipo de servicio que busca ");
+		System.out.println("1. banho de mascotas en la veterinaria");
+		System.out.println("2. banho de mascotas a domicilio");
+		System.out.println("3. corte de unhas");
+		System.out.println("4. profilaxis dental");
+		System.out.println("5. vacunacion");
+	}
+} //end of class

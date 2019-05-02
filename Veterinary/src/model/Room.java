@@ -35,4 +35,4 @@ public class Room{
 	public void setNumber(int number){
 		this.number = number;
 	}
-}
+} //end of class
