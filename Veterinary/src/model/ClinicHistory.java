@@ -302,4 +302,14 @@ public class ClinicHistory{
 	public void addSintomsNotes(String notes){
 		sintoms += notes;
 	}
+	
+	/**
+	* get a determinate position of a date of a service<br>
+	* @param pos is a position on the date<br>
+	* @return date is the date the service was taking<br>
+	*/
+	
+	public int getDatePos(int pos){
+		return date[pos];
+	}
 } //end of class

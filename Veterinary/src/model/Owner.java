@@ -359,4 +359,20 @@ public class Owner{
 		}
 		return theServices;
 	}
+	
+	/**
+	* look for the clinic histories are in a determinate start and finish date<br>
+	* @param theDate is the start and finish date<br>
+	* @return clinicHistory are the clinic histories that are on the delimited date<br>
+	*/
+	
+	public ArrayList<ClinicHistory> getClinicHistoriesOfADelimitedDate(int[] theDate){
+		ArrayList<ClinicHistory> clinicHistory = new ArrayList<ClinicHistory>();
+		for(int i = 0;i < pets.size();i++){
+			for(int j = 0;j < pets.get(i).getClinicHistoriesOfADelimitedDate(theDate).size();j++){
+				clinicHistory.add(pets.get(i).getClinicHistoriesOfADelimitedDate(theDate).get(j));
+			}
+		}
+		return clinicHistory;
+	}
 } //end of class

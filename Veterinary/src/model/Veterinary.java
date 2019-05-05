@@ -26,8 +26,8 @@ public class Veterinary{
 		people = new ArrayList <Owner> ();
 		rooms = new Room[ROOM];
 		for(int i = 0;i<ROOM;i++){
-			Room room = new Room(++i);
-			rooms[i] = room;
+
+			rooms[i] = new Room(++i);
 		}
 	}
 	
@@ -382,14 +382,26 @@ public class Veterinary{
 	* calculate the average for the veterinary of a specific week<br>
 	* @param date is the date the week start and finish. date is exactly a week<br>
 	* @return ave is the average for the vet on a week<br>
+	setCost()
 	*/
-	/**
+	
 	public double calculateAverageOfAWeek(int[]date){
 		double ave = 0;
-		
+		ArrayList<ClinicHistory> ch = new ArrayList<ClinicHistory>();
+		ArrayList<Service> s = new ArrayList<Service>();
+		ch = getClinicHistoriesOfADelimitedDate( date);
+		s = getServicesOfADelimitedDate(date);
+		for(int i = 0;i < ch.size();i++){
+			ch.get(i).setCost();
+			ave += ch.get(i).getCost();
+		}
+		for(int j = 0;j < s.size();j++){
+			ave += s.get(j).getCost();
+		}
+		ave /= (ch.size()+s.size());
 		return ave;
 	}
-	*/
+	
 	
 	/**
 	* look for the services are in a determinate start and finish date<br>
@@ -406,5 +418,21 @@ public class Veterinary{
 			}
 		}
 		return theServices;
+	}
+	
+	/**
+	* look for the clinic histories are in a determinate start and finish date<br>
+	* @param theDate is the start and finish date<br>
+	* @return clinicHistory are the clinic histories that are on the delimited date<br>
+	*/
+	
+	public ArrayList<ClinicHistory> getClinicHistoriesOfADelimitedDate(int[] theDate){
+		ArrayList<ClinicHistory> clinicHistory = new ArrayList<ClinicHistory>();
+		for(int i = 0;i < people.size();i++){
+			for(int j = 0;j < people.get(i).getClinicHistoriesOfADelimitedDate(theDate).size();j++){
+				clinicHistory.add(people.get(i).getClinicHistoriesOfADelimitedDate(theDate).get(j));
+			}
+		}
+		return clinicHistory;
 	}
 } //end of class

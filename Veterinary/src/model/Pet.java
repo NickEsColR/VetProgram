@@ -451,4 +451,35 @@ public class Pet{
 		}		
 		return theServices;
 	}
+	
+	/**
+	* look for the clinic histories are in a determinate start and finish date<br>
+	* @param theDate is the start and finish date<br>
+	* @return clinicHistory are the clinic histories that are on the delimited date<br>
+	*/
+	
+	public ArrayList<ClinicHistory> getClinicHistoriesOfADelimitedDate(int[] theDate){
+		ArrayList<ClinicHistory> clinicHistory = new ArrayList<ClinicHistory>();
+		while(theDate[0] != theDate[3] | theDate[1] != theDate[4] | theDate[2] != theDate[5]){
+			for(int i = 0;i < clinicHistories.size();i++){
+				if(clinicHistories.get(i).getDatePos(2) == theDate[2] && clinicHistories.get(i).getDatePos(1) == theDate[1] && clinicHistories.get(i).getDatePos(0) == theDate[0]){
+					clinicHistory.add(clinicHistories.get(i));
+				}
+			}
+			if(cHistory.getDatePos(2) == theDate[2] && cHistory.getDatePos(1) == theDate[1] && cHistory.getDatePos(0) == theDate[0]){
+					clinicHistory.add(cHistory);
+			}
+			theDate[0]++;
+			if(theDate[0] == 31){
+				theDate[0] = 1;
+				theDate[1]++;
+				if(theDate[1] == 13){
+					theDate[1] = 1;
+					theDate[2]++;
+				}
+			}
+			
+		}		
+		return clinicHistory;
+	}
 } //end of class

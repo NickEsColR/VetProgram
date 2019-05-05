@@ -27,6 +27,7 @@ public class Main{
 		String freeRoom = "";
 		Scanner option = new Scanner(System.in);
 		int cont = 0;
+		int[] determinateDate = new int[6];
 		ArrayList <Drug> cDrugs = new ArrayList <Drug>();
 		String id = "";
 		String petName ="";
@@ -277,9 +278,32 @@ public class Main{
 					}
 					System.out.println("El promedio de ingresos por el servicio de "+typeName+ " es "+vet.calculateAverageOfAService( typeName));
 				break;
+				case 13:
+					System.out.println("*************************************************************************");
+					System.out.println("digite el dia de inicio de la semana");
+					determinateDate[0] = option.nextInt();
+					option.nextLine();
+					System.out.println("digite el mes de inicio de la fecha esperada");
+					determinateDate[1] = option.nextInt();
+					option.nextLine();
+					System.out.println("digite el anho de inicio de la fecha esperada");
+					determinateDate[2] = option.nextInt();
+					option.nextLine();
+					System.out.println("digite el dia de cierre de la fecha esperada");
+					determinateDate[3] = option.nextInt();
+					option.nextLine();
+					System.out.println("digite el mes de cierre de la fecha esperada");
+					determinateDate[4] = option.nextInt();
+					option.nextLine();
+					System.out.println("digite el anho de cierre de la fecha esperada");
+					determinateDate[5] = option.nextInt();
+					option.nextLine();
+					System.out.println(vet.calculateAverageOfAWeek(determinateDate));
+						
+					System.out.println("*************************************************************************");
+				break;
 				case 14:
 					System.out.println("*************************************************************************");
-					int[] determinateDate = new int[6];
 					System.out.println("digite el anho de inicio de la fecha esperada");
 					determinateDate[0] = option.nextInt();
 					option.nextLine();
@@ -297,9 +321,10 @@ public class Main{
 					option.nextLine();
 					System.out.println("digite el dia de cierre de la fecha esperada");
 					determinateDate[5] = option.nextInt();
-					option.nextLine();
+					
 					for(int i = 0;i < vet.getServicesOfADelimitedDate(determinateDate).size();i++){
 						System.out.println(vet.getServicesOfADelimitedDate(determinateDate).get(i));
+						System.out.println(" ");
 					}
 					System.out.println("*************************************************************************");
 				break;
